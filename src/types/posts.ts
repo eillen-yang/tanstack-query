@@ -19,6 +19,7 @@ export interface User {
       lng: string;
     };
   };
+  email: string;
   phone: string;
   website: string;
   company: {
