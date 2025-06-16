@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { deletePost } from "../api/posts";
 
 type Props = {
-  postId: number;
+  postId: number | undefined;
 };
 
 export default function DeleteButton({ postId }: Props) {
@@ -11,7 +11,7 @@ export default function DeleteButton({ postId }: Props) {
   const navigate = useNavigate();
 
   const mutation = useMutation({
-    mutationFn: () => deletePost(postId),
+    mutationFn: () => deletePost(postId!),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
       alert("삭제되었습니다.");
